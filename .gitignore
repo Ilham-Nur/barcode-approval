@@ -3,6 +3,9 @@
 /public/build
 /public/hot
 /public/storage
+/public/*
+!/public/template/
+!/public/template/**
 /storage/*.key
 /storage/pail
 /vendor
