@@ -1,7 +1,8 @@
 /.phpunit.cache
 /node_modules
-!/public/template/
-!/public/template/**
+/public/build
+/public/hot
+/public/storage
 /storage/*.key
 /storage/pail
 /vendor
