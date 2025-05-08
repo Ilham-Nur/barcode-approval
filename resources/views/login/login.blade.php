@@ -19,6 +19,42 @@
 
     <link href="{{ asset('template/static/css/app.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #0d1b2a, #000000);
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .card {
+            background-color: #f0f0f0;
+            /* abu-abu muda */
+            border: none;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+        }
+
+        .form-control {
+            background-color: #ffffff;
+            color: #000;
+            border: 1px solid #ccc;
+        }
+
+        .form-control:focus {
+            border-color: #0d6efd;
+            box-shadow: 0 0 0 0.2rem rgba(13, 110, 253, 0.25);
+        }
+
+        h1.h2,
+        .lead {
+            color: #ffffff;
+        }
+
+        .text-center p.lead {
+            color: #ccc;
+        }
+    </style>
+
 </head>
 
 <body>
@@ -57,7 +93,7 @@
 											</div>
 										</div> --}}
                                         <div class="d-grid gap-2 mt-3">
-                                            <button type="submit" class="btn btn-lg btn-primary">Sign in</button>
+                                            <button type="submit" class="btn btn-lg btn-dark">Sign in</button>
                                         </div>
                                     </form>
                                 </div>
