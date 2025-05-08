@@ -28,7 +28,8 @@
 
     <script src="{{ asset('template2/static/js/app.js') }}"></script>
 
-
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             var ctx = document.getElementById("chartjs-dashboard-line").getContext("2d");
@@ -254,6 +255,8 @@
             });
         });
     </script>
+    @yield('script')
+
 
 </body>
 

@@ -2,7 +2,7 @@
     <nav id="sidebar" class="sidebar js-sidebar">
         <div class="sidebar-content js-simplebar">
             <a class="sidebar-brand" href="index.html">
-                <span class="align-middle">AdminKit</span>
+                <span class="align-middle">GEO-System</span>
             </a>
 
             <ul class="sidebar-nav">
@@ -97,18 +97,6 @@
                     </a>
                 </li>
             </ul>
-
-            <div class="sidebar-cta">
-                <div class="sidebar-cta-content">
-                    <strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-                    <div class="mb-3 text-sm">
-                        Are you looking for more components? Check out our premium version.
-                    </div>
-                    <div class="d-grid">
-                        <a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </nav>
 
@@ -306,7 +294,7 @@
                     <div class="col-6 text-start">
                         <p class="mb-0">
                             <a class="text-muted" href="https://adminkit.io/"
-                                target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted"
+                                target="_blank"><strong>GEO-System</strong></a> - <a class="text-muted"
                                 href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin
                                     Template</strong></a> &copy;
                         </p>
