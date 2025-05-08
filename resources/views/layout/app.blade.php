@@ -18,7 +18,7 @@
 
     <title> @yield ('title')</title>
 
-    <link href="{{ asset('template2/static/css/app.css') }}"  rel="stylesheet">
+    <link href="{{ asset('template/static/css/app.css') }}"  rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -26,7 +26,7 @@
 
     @include('layout.main')
 
-    <script src="{{ asset('template2/static/js/app.js') }}"></script>
+    <script src="{{ asset('template/static/js/app.js') }}"></script>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
