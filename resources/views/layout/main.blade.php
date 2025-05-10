@@ -17,7 +17,7 @@
                     </a>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="index.html">
+                     <a class="sidebar-link" href="{{ route('projects.index') }}">
                         <i class="align-middle me-2" data-feather="file-text"></i></i> <span
                             class="align-middle">Project</span>
                     </a>

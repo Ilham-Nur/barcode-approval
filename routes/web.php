@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProjectController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,4 +12,11 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::resource('projects', ProjectController::class);
+    Route::patch('/projects/{project}/approve', [ProjectController::class, 'approve'])->name('projects.approve');
+    Route::patch('/projects/{project}/reject', [ProjectController::class, 'reject'])->name('projects.reject');
+
+
+    Route::resource('statuses', \App\Http\Controllers\ProjectStatusController::class);
 });
