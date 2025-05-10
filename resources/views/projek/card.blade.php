@@ -24,7 +24,7 @@
         }
 
         .card-header {
-            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            background: linear-gradient(135deg, #111dcb 0%, #2575fc 100%);
             color: white;
             padding: 1.5rem;
             border-bottom: none;
@@ -139,7 +139,6 @@
                     <div class="card-header">
                         <h4>
                             <span><i class="fas fa-project-diagram me-2"></i> Project Details</span>
-                            <i class="fas fa-ship"></i>
                         </h4>
                     </div>
                     <div class="card-body">
@@ -186,6 +185,10 @@
                                     <i class="fas {{ $statusIcon }} me-1"></i> {{ $project->status->nama ?? '-' }}
                                 </span>
                             </div>
+                        </div>
+                        <div class="detail-item">
+                            <strong>Disetujui Oleh</strong>
+                            <p>{{ $project->user->name }}</p>
                         </div>
                     </div>
                 </div>

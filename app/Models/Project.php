@@ -28,4 +28,9 @@ class Project extends Model
     {
         return $this->belongsTo(ProjectStatus::class, 'status_id');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
