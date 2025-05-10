@@ -18,8 +18,10 @@ class Project extends Model
         'tanggal_inspeksi',
         'tanggal_selesai',
         'status_id',
+        'user_id',
         'pdf_path',
         'barcode_path',
+        
     ];
 
     public function status()

@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Project;
 use App\Models\ProjectStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class ProjectController extends Controller
 {
-   public function index()
+    public function index()
     {
         $projects = Project::with('status')->latest()->get();
         return view('projek.indexprojek', compact('projects'));
@@ -24,16 +26,16 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         // dd($request->all());
-            $validated = $request->validate([
-                'nama_perusahaan' => 'required|string|max:255',
-                'nama_kapal' => 'required|string|max:255',
-                'lokasi' => 'required|string|max:255',
-                'jenis_pekerjaan' => 'required|string|max:255',
-                'tanggal_masuk' => 'required|date',
-                'tanggal_inspeksi' => 'nullable|date',
-                'tanggal_selesai' => 'nullable|date',
-                'pdf_file' => 'nullable|mimes:pdf|max:2048',
-            ]);
+        $validated = $request->validate([
+            'nama_perusahaan' => 'required|string|max:255',
+            'nama_kapal' => 'required|string|max:255',
+            'lokasi' => 'required|string|max:255',
+            'jenis_pekerjaan' => 'required|string|max:255',
+            'tanggal_masuk' => 'required|date',
+            'tanggal_inspeksi' => 'nullable|date',
+            'tanggal_selesai' => 'nullable|date',
+            'pdf_file' => 'nullable|mimes:pdf|max:2048',
+        ]);
 
 
         $validated['status_id'] = ProjectStatus::where('nama', 'Pending')->value('id');
@@ -112,9 +114,12 @@ class ProjectController extends Controller
         return redirect()->route('projects.index')->with('success', 'Project berhasil dihapus.');
     }
 
-   public function approve(Project $project)
+    public function approve(Project $project)
     {
-        $project->update(['status_id' => 2]);
+        $project->update([
+            'status_id' => 2,
+            'user_id' => FacadesAuth::id(), // simpan ID user yang login
+        ]);
         return response()->json(['success' => true, 'message' => 'Project berhasil di-approve.']);
     }
 
@@ -122,5 +127,53 @@ class ProjectController extends Controller
     {
         $project->update(['status_id' => 3]);
         return response()->json(['success' => true, 'message' => 'Project berhasil di-reject.']);
+    }
+
+    public function generateBarcode(Request $request)
+    {
+        $project = Project::findOrFail($request->id);
+
+        if ($project->barcode_path) {
+            return response()->json([
+                'status' => 'exists',
+                'path' => asset('storage/' . $project->barcode_path),
+            ]);
+        }
+
+        $qrData = route('projects.show.card', $project->id);
+
+        $filename = 'barcodes/qr_project_' . $project->id . '.svg';
+
+        $qrCodeImage = QrCode::format('svg')->size(300)->generate($qrData);
+
+        Storage::disk('public')->put($filename, $qrCodeImage);
+
+        $project->barcode_path = $filename;
+        $project->save();
+
+        return response()->json([
+            'status' => 'created',
+            'path' => asset('storage/' . $filename),
+        ]);
+    }
+
+    public function getBarcode($id)
+    {
+        $project = Project::findOrFail($id);
+
+        if ($project->barcode_path && Storage::disk('public')->exists($project->barcode_path)) {
+            return response()->json([
+                'status' => 'exists',
+                'path' => asset('storage/' . $project->barcode_path),
+            ]);
+        }
+
+        return response()->json(['status' => 'not_found'], 404);
+    }
+
+    public function showCard($id)
+    {
+        $project = Project::findOrFail($id);
+        return view('projek.card', compact('project'));
     }
 }
