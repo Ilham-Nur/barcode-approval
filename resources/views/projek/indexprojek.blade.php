@@ -4,81 +4,6 @@
 
 @section('content')
 
-    <style>
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1055;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: rgba(0, 0, 0, 0.5);
-            padding-right: 0 !important;
-        }
-
-        .modal-dialog {
-            position: relative;
-            width: auto;
-            margin: 1.75rem auto;
-            pointer-events: none;
-            max-width: 500px;
-        }
-
-        .modal-dialog-centered {
-            display: flex;
-            align-items: center;
-            min-height: calc(100% - 3.5rem);
-        }
-
-        .modal-content {
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            pointer-events: auto;
-            background-color: #fff;
-            background-clip: padding-box;
-            border: 1px solid rgba(0, 0, 0, 0.2);
-            border-radius: 0.3rem;
-            outline: 0;
-            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-            animation: fadeInDown 0.3s ease-out;
-        }
-
-        .modal-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 1rem 1rem;
-            border-bottom: 1px solid #dee2e6;
-            background-color: #f8f9fa;
-        }
-
-        .modal-title {
-            margin: 0;
-            font-size: 1.25rem;
-            font-weight: 500;
-        }
-
-        .modal-body {
-            position: relative;
-            flex: 1 1 auto;
-            padding: 1rem;
-        }
-
-        .modal-footer {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            padding: 0.75rem;
-            border-top: 1px solid #dee2e6;
-            background-color: #f8f9fa;
-            gap: 0.5rem;
-        }
-
-    </style>
     <div class="container-fluid p-0">
         <h1 class="h3 mb-3">Project List</h1>
 
@@ -162,7 +87,7 @@
                                             @if ($project->status_id == 2)
                                                 <button class="btn p-1 btn-secondary btnGenerateBarcode"
                                                     data-id="{{ $project->id }}" title="Generate Barcode">
-                                                    barcode
+                                                   <i data-feather="grid"></i>
                                                 </button>
                                             @endif
 
@@ -216,7 +141,7 @@
             </div>
         </div>
     </div>
-    
+
 @endsection
 
 @section('script')

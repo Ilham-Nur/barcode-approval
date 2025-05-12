@@ -22,12 +22,12 @@
                             class="align-middle">Project</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a class="sidebar-link" href="index.html">
                         <i class="align-middle me-2" data-feather="users"></i></i> <span
                             class="align-middle">Role</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="index.html">
                         <i class="align-middle me-2" data-feather="user"></i>  <span
